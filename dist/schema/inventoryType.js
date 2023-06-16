@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 // import db from '../models';
 // const User = db.users;
 // import UserType from './usertype';

@@ -9,30 +9,36 @@ export interface InventoryDocument extends Document {
   unit: string;
 }
 
-const inventorySchema: Schema<InventoryDocument> = new mongoose.Schema<InventoryDocument>({
-  username: {
-    type: String
+const inventorySchema: Schema<InventoryDocument> = new mongoose.Schema<InventoryDocument>(
+  {
+    username: {
+      type: String
+    },
+    itemName: {
+      type: String
+    },
+    price: {
+      type: String
+    },
+    classification: {
+      type: String
+    },
+    remaining: {
+      type: String
+    },
+    unit: {
+      type: String
+    }
   },
-  itemName: {
-    type: String
-  },
-  price: {
-    type: String
-  },
-  classification: {
-    type: String
-  },
-  remaining: {
-    type: String
-  },
-  unit: {
-    type: String
+  {
+    versionKey: false,
+    collection: 'inventory' // Specify the custom collection name here
   }
-}, {
-  versionKey: false,
-  collection: 'inventory' // Specify the custom collection name here
-});
+);
 
-const InventoryModel: Model<InventoryDocument> = mongoose.model<InventoryDocument>('inventory', inventorySchema);
+const InventoryModel: Model<InventoryDocument> = mongoose.model<InventoryDocument>(
+  'inventory',
+  inventorySchema
+);
 
 export default InventoryModel;

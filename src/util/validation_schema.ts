@@ -11,7 +11,8 @@ const usernameSchema = Joi.string()
     'string.empty': 'Username is required',
     'string.min': 'Username must be at least {#limit} characters long',
     'string.max': 'Username cannot exceed {#limit} characters',
-    'string.pattern.base': 'Username must start with a letter and can only contain letters and numbers',
+    'string.pattern.base':
+      'Username must start with a letter and can only contain letters and numbers'
   });
 
 const emailSchema = Joi.string().email().required();
@@ -41,11 +42,4 @@ const passwordSchema = Joi.string()
     'any.invalid': 'Password must meet the complexity requirements'
   });
 
-export {
-  emailSchema,
-  passwordSchema,
-  usernameSchema
-};
-
-
-
+export { emailSchema, passwordSchema, usernameSchema };

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 // import db from '../models';
 // const Inventory = db.inventory;
 // import InventoryType from './inventoryType';

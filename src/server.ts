@@ -24,10 +24,14 @@ app.get('/', (req, res) => {
 });
 
 //Graphql
-app.use('/graphql', requiresAuth(), graphqlHTTP({
-  schema,
-  graphiql: true
-}));
+app.use(
+  '/graphql',
+  requiresAuth(),
+  graphqlHTTP({
+    schema,
+    graphiql: true
+  })
+);
 
 db.mongoose
   .connect(db.url)
@@ -36,7 +40,7 @@ db.mongoose
       console.log(`Connected to the database and server running on port ${port}.`);
     });
   })
-  .catch(err => {
+  .catch((err) => {
     console.log('Cannot connect to the database!', err);
     process.exit(1);
   });
