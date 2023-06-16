@@ -195,7 +195,7 @@ const RootMutation = new graphql_1.GraphQLObjectType({
                         firstName: args.firstName,
                         lastName: args.lastName,
                         email: args.email,
-                        password: args.password,
+                        password: hashedPassword,
                         birthDate: args.birthDate,
                         phone: args.phone,
                         country: args.country,
@@ -233,6 +233,11 @@ const RootMutation = new graphql_1.GraphQLObjectType({
                     }
                     if (args.password) {
                         await validation_schema_1.passwordSchema.validateAsync(args.password);
+                    }
+                    if (args.password) {
+                        const saltRounds = 10;
+                        const hashedPassword = await bcryptjs_1.default.hash(args.password, saltRounds);
+                        updateData.password = hashedPassword; // Update the password with the hashed value
                     }
                     const existingUser = await User.findOne({
                         _id: { $ne: id },
