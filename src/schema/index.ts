@@ -1,6 +1,7 @@
 import db from '../models';
 const User = db.users;
 const Inventory = db.inventory;
+import bcrypt from 'bcryptjs';
 
 import {
   GraphQLObjectType,
@@ -205,6 +206,10 @@ const RootMutation = new GraphQLObjectType({
           if (existingUser) {
             throw new Error('Username or email already exists.');
           }
+
+          // Generate a salt and hash the password
+          const saltRounds = 10;
+          const hashedPassword = await bcrypt.hash(args.password, saltRounds);
 
           let user = new User({
             username: args.username,

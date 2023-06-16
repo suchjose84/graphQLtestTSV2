@@ -1,36 +1,31 @@
-'use strict';
-var __importDefault =
-  (this && this.__importDefault) ||
-  function (mod) {
-    return mod && mod.__esModule ? mod : { default: mod };
-  };
-Object.defineProperty(exports, '__esModule', { value: true });
-const mongoose_1 = __importDefault(require('mongoose'));
-const inventorySchema = new mongoose_1.default.Schema(
-  {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = __importDefault(require("mongoose"));
+const inventorySchema = new mongoose_1.default.Schema({
     username: {
-      type: String
+        type: String
     },
     itemName: {
-      type: String
+        type: String
     },
     price: {
-      type: String
+        type: String
     },
     classification: {
-      type: String
+        type: String
     },
     remaining: {
-      type: String
+        type: String
     },
     unit: {
-      type: String
+        type: String
     }
-  },
-  {
+}, {
     versionKey: false,
     collection: 'inventory' // Specify the custom collection name here
-  }
-);
+});
 const InventoryModel = mongoose_1.default.model('inventory', inventorySchema);
 exports.default = InventoryModel;
