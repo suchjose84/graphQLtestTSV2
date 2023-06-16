@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.config = void 0;
 // module.exports = {
 //   config: {
 //     authRequired: false,
@@ -17,8 +16,8 @@ exports.config = void 0;
 //   }
 // };
 const dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config;
-exports.config = {
+dotenv_1.default.config();
+const config = {
     authRequired: false,
     auth0Logout: true,
     secret: process.env.SECRET,
@@ -26,3 +25,4 @@ exports.config = {
     clientID: process.env.CLIENT_ID,
     issuerBaseURL: process.env.ISSUER_BASE_URL
 };
+exports.default = config;
