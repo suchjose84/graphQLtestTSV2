@@ -17,7 +17,7 @@ app.use((0, express_openid_connect_1.auth)(auth0_config_js_1.default));
 app.get('/', (req, res) => {
     if (req.oidc.isAuthenticated()) {
         // User is authenticated
-        res.send('You are logged in! API doc is at https://graphqltest.onrender.com');
+        res.send('You are logged in! API doc is at https://graphqltesttsv2.onrender.com/graphql');
     }
     else {
         // User is not authenticated
@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
     }
 });
 //Graphql
-app.use('/graphql', (0, express_graphql_1.graphqlHTTP)({
+app.use('/graphql', (0, express_openid_connect_1.requiresAuth)(), (0, express_graphql_1.graphqlHTTP)({
     schema: index_1.default,
     graphiql: true
 }));

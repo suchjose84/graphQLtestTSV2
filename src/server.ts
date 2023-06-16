@@ -16,7 +16,7 @@ app.use(auth(config));
 app.get('/', (req, res) => {
   if (req.oidc.isAuthenticated()) {
     // User is authenticated
-    res.send('You are logged in! API doc is at https://graphqltest.onrender.com');
+    res.send('You are logged in! API doc is at https://graphqltesttsv2.onrender.com/graphql');
   } else {
     // User is not authenticated
     res.send('Welcome guest! Please login.');
@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 //Graphql
-app.use('/graphql', graphqlHTTP({
+app.use('/graphql', requiresAuth(), graphqlHTTP({
   schema,
   graphiql: true
 }));
